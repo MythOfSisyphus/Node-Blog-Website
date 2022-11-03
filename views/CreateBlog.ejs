@@ -35,7 +35,7 @@
     </header>
 
     <!--  Main content of the page  -->
-    <section class="my-5 px-2 py-2 mx-5 border border-black">
+    <form action="/create" method="post" id="Blog_Form" class="my-5 px-2 py-2 mx-5 border border-black">
         <div class="text-xl font-semibold">New blog</div>
 
         <!-- Blog's Title and Body -->
@@ -45,7 +45,7 @@
                 <input name="title" id="title" placeholder="Title..."
                     class="px-2 py-1 w-full rounded-md border border-black">
             </div>
-            
+
             <!-- Author's Name -->
             <div>
                 <input name="author" id="author" placeholder="Author's Name..."
@@ -60,8 +60,9 @@
         </div>
 
         <!-- Button to save New Blog -->
-        <button type="submit" id="AddBtn" class="text-white bg-black shadow-lg rounded-md px-2 py-1 hover:bg-gray-600">Add Blog</button>
-    </section>
+        <button type="submit" id="AddBtn"
+            class="text-white bg-black shadow-lg rounded-md px-2 py-1 hover:bg-gray-600">Add Blog</button>
+    </form>
 
     <script src="/CreateBlog.js"></script>
 </body>

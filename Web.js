@@ -1,11 +1,13 @@
 const express = require('express');
+const path = require('path')
 // Middleware
 const morgan = require('morgan')
 // mongoose
-const mongoose = required('mongoose')
+const mongoose = require('mongoose')
 // Getting MongoURI ( I'm not giving my Key you can get yours from MongoDB Atlas )
-const { MongoDB_Connection } = require('./Keys/MongoURI')
-
+const { MongoDB_Connection } = require('./Keys/MongoURI');
+const exp = require('constants');
+// express app
 const app = express();
 
 // using PORT to serve our website otherwise 3000
@@ -23,12 +25,13 @@ mongoose.connect(URI, { useNewUrlParser: true, useUnifiedTopology: true })
 // Middlewares
 app.use(morgan('dev'))
 app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 
 // Setting up view engine
 app.set('view engine', 'ejs')
 
 // serving static files like 'js, css that are required for our web pages'
-app.use(express.static('Public'))
+app.use(express.static(path.join(__dirname, 'public')))
 
 app.get('/', (req, res) => {
     // res.send('Hello world! This is my blog website.')
@@ -37,4 +40,9 @@ app.get('/', (req, res) => {
 
 app.get('/create', (req, res) => {
     res.render('CreateBlog')
+})
+
+app.post('/create', (req, res) => {
+    console.log(req.body);
+    res.status(200).json({ reuqested: req.body })
 })
