@@ -7,12 +7,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MyBlog - Creating Blog</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://use.fontawesome.com/7df851cac3.js"></script>
+    <style>
+        textarea[name=blogbody] {
+            resize: none;
+        }
+    </style>
 </head>
 
 <body>
+
     <header class="text-gray-400 bg-gray-900 body-font">
-        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-            <a class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
+        <div class="container mx-auto flex flex-wrap p-5 flex-row items-center">
+            <a class="flex title-font font-medium items-center text-white">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round"
                     stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-blue-500 rounded-full"
                     viewBox="0 0 24 24">
@@ -21,11 +28,45 @@
                 <span class="ml-3 text-xl">MyBlogs</span>
             </a>
             <nav
-                class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-700	flex flex-wrap items-center text-base justify-center">
-                <a href="/" class="mr-5 hover:text-white">Home</a>
+                class="mr-auto ml-4 py-1 pl-4 border-l border-gray-700 flex flex-wrap items-center text-base justify-center">
+                <a class="mr-5 hover:text-white">Home</a>
             </nav>
         </div>
     </header>
+
+    <!--  Main content of the page  -->
+    <section class="my-4 px-2 py-2 mx-5 border border-black">
+        <div class="text-lg font-semibold">New blog</div>
+
+        <!-- Editing tools -->
+        <div class="flex flex-wrap space-x-2 my-2 font-semibold">
+            <div class="border border-black px-[6px] rounded-md hover:bg-black hover:text-white"><i
+                    class="fa fa-bold"></i></div>
+            <div class="border border-black px-[6px] rounded-md hover:bg-black hover:text-white"><i
+                    class="fa fa-italic"></i></div>
+            <div class="border border-black px-[6px] rounded-md hover:bg-black hover:text-white"><i
+                    class="fa fa-underline"></i></div>
+        </div>
+
+        <!-- Blog's Title and Body -->
+        <div class="space-y-3 my-3">
+            <!-- Blog's Title -->
+            <div>
+                <input name="title" id="title" placeholder="Title..."
+                    class="px-2 py-1 w-full rounded-md border border-black">
+            </div>
+
+            <!-- Blog's Body -->
+            <div>
+                <textarea name="blogbody" id="blogbody" placeholder="Content..."
+                    class="border border-black rounded-md px-2 py-1 w-full h-[50vw]"></textarea>
+            </div>
+        </div>
+
+        <!-- Button to save New Blog -->
+        <button class="text-white bg-black shadow-lg rounded-md px-2 py-1 hover:bg-gray-600">Add Blog</button>
+    </section>
+
 </body>
 
 </html>
