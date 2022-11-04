@@ -6,7 +6,8 @@ const morgan = require('morgan')
 const mongoose = require('mongoose')
 // Getting MongoURI ( I'm not giving my Key you can get yours from MongoDB Atlas )
 const { MongoDB_Connection } = require('./tools/DBURI');
-const exp = require('constants');
+// BlogSchema
+const { Blogs } = require('./DataBase/BlogSchema')
 // express app
 const app = express();
 
@@ -42,7 +43,15 @@ app.get('/create', (req, res) => {
     res.render('CreateBlog')
 })
 
-app.post('/create', (req, res) => {
+app.post('/create', async (req, res) => {
     console.log(req.body);
-    res.status(200).json({ reuqested: req.body })
+    const { title, author, blogbody  } = req.body;
+    let NewBlog = await Blogs.create({ title, author, blogbody });
+    res.status(200).json({ yeah: NewBlog })
+})
+
+app.get('/allblogs', async(req, res) => {
+    // let AllBlogs = await Blogs.find().sort({createdAt: -1});
+    // res.json(AllBlogs)
+    res.render('AllBlogs')
 })

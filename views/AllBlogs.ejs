@@ -9,13 +9,11 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://use.fontawesome.com/7df851cac3.js"></script>
     <style>
-        textarea[name=blogbody] {
-            resize: none;
-        }
+
     </style>
 </head>
 
-<body>
+<body class="bg-gray-900 text-white">
 
     <header class="text-gray-400 bg-gray-900 body-font">
         <div class="container mx-auto flex flex-wrap p-5 flex-row items-center">
@@ -25,7 +23,7 @@
                     viewBox="0 0 24 24">
                     <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
                 </svg>
-                <span class="ml-3 text-xl">MyBlogs</span>
+                <span class="ml-3 text-xl">AllBlogs</span>
             </a>
             <nav
                 class="mr-auto ml-4 py-1 pl-4 border-l border-gray-700 flex flex-wrap items-center text-base justify-center">
@@ -34,37 +32,25 @@
         </div>
     </header>
 
-    <!--  Main content of the page  -->
-    <div id="Blog_Form" class="my-5 px-2 py-2 mx-5 border border-black">
-        <div class="text-xl font-semibold">New blog</div>
+    <hr>
 
-        <!-- Blog's Title and Body -->
-        <div class="space-y-4 my-4">
-            <!-- Blog's Title -->
-            <div>
-                <input name="title" id="title" placeholder="Title..."
-                    class="px-2 py-1 w-full rounded-md border border-black">
+    <section id="Blogs">
+        <div class="mx-5 my-5 p-5 space-y-4 border border-white rounded-md shadow-md shadow-white">
+            <h1 class="text-xl">Title</h1>
+            <p class="italic">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque, quas.
+                Eos eius voluptatibus illo excepturi sunt magni? Vel consectetur magnam
+                doloremque soluta iusto modi non quidem impedit ad suscipit facere, numquam,
+                odit dolores reiciendis aliquam fugiat quod sit consequatur. Reprehenderit.
+            </p>
+            <div class="flex item-center justify-between">
+                <h1 class="text-lg">Author</h1>
+                <h1 id="DeleteBtn" class="text-lg"><i class="fa fa-trash-o px-1 py-1 hover:border hover:border-white hover:rounded-md"></i></h1>
             </div>
-
-            <!-- Author's Name -->
-            <div>
-                <input name="author" id="author" placeholder="Author's Name..."
-                    class="px-2 py-1 w-full rounded-md border border-black">
-            </div>
-            <!-- Blog's Body -->
-            <div>
-                <textarea name="blogbody" id="blogbody" placeholder="Content..."
-                    class="border border-black rounded-md px-2 py-1 w-full h-[50vw]"></textarea>
-            </div>
-
         </div>
+    </section>
 
-        <!-- Button to save New Blog -->
-        <button type="submit" id="AddBtn"
-            class="text-white bg-black shadow-lg rounded-md px-2 py-1 hover:bg-gray-600">Add Blog</button>
-    </div>
-
-    <script src="/CreateBlog.js"></script>
+    <script src="/AllBlogs.js"></script>
 </body>
 
 </html>

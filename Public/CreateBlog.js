@@ -1,11 +1,17 @@
-let title = document.querySelector('#title').value,
-    author = document.querySelector('#author').value,
-    blogbody = document.querySelector('#blogbody').value;
+let Title = document.querySelector('#title'),
+    Author = document.querySelector('#author'),
+    BlogBody = document.querySelector('#blogbody');
 
-let form = document.querySelector('form');
-form.addEventListener('submit', sendingBlog );
+let AddBtn = document.querySelector('#AddBtn');
+AddBtn.addEventListener('click', sendingBlog );
 
 async function sendingBlog() {
+
+    let title = Title.value;
+    let author = Author.value;
+    let blogbody = BlogBody.value;
+
+
     let res = await fetch('/create', {
         method: 'POST',
         body: JSON.stringify({ title, author, blogbody }),
@@ -15,7 +21,7 @@ async function sendingBlog() {
     let data = await res.json();
     console.log(data);
 
-    location.assign('/');
+    location.assign('/allblogs');
 
     // title.value = '';
     // author.value = '';
