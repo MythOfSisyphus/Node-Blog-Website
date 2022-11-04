@@ -1,4 +1,7 @@
 const express = require('express');
+
+const { Router } = require('./Routes/WebRoutes')
+
 const path = require('path')
 // Middleware
 const morgan = require('morgan')
@@ -39,30 +42,4 @@ app.get('/', (req, res) => {
     res.render('Home')
 })
 
-app.get('/create', (req, res) => {
-    res.render('CreateBlog')
-})
-
-app.post('/create', async (req, res) => {
-    console.log(req.body);
-    const { title, author, blogbody  } = req.body;
-    let NewBlog = await Blogs.create({ title, author, blogbody });
-    res.status(200).json({ yeah: NewBlog })
-})
-
-app.get('/allblogs', async(req, res) => {
-    let AllBlogs = await Blogs.find().sort({createdAt: -1});
-    // res.json(AllBlogs);
-    res.render('AllBlogs', { Blogs: AllBlogs });
-})
-
-app.get('/delete/:id', (req, res) => {
-    Blogs.findByIdAndRemove(req.params.id, (err, doc) => {
-        if(!err) {
-            res.redirect('/allblogs')
-        }
-        else {
-            console.log('Failed to delete user Details: ', err)
-        }
-    })
-})
+app.use(Router)
