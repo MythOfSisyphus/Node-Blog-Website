@@ -27,7 +27,8 @@
             </a>
             <nav
                 class="mr-auto ml-4 py-1 pl-4 border-l border-gray-700 flex flex-wrap items-center text-base justify-center">
-                <a class="mr-5 hover:text-white">Home</a>
+                <a href="/" class="mr-5 hover:text-white">Home</a>
+                <a href="/create" class="mr-5 hover:text-white">Create Blog</a>
             </nav>
         </div>
     </header>
@@ -35,19 +36,24 @@
     <hr>
 
     <section id="Blogs">
-        <div class="mx-5 my-5 p-5 space-y-4 border border-white rounded-md shadow-md shadow-white">
-            <h1 class="text-xl">Title</h1>
-            <p class="italic">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque, quas.
-                Eos eius voluptatibus illo excepturi sunt magni? Vel consectetur magnam
-                doloremque soluta iusto modi non quidem impedit ad suscipit facere, numquam,
-                odit dolores reiciendis aliquam fugiat quod sit consequatur. Reprehenderit.
-            </p>
-            <div class="flex item-center justify-between">
-                <h1 class="text-lg">Author</h1>
-                <h1 id="DeleteBtn" class="text-lg"><i class="fa fa-trash-o px-1 py-1 hover:border hover:border-white hover:rounded-md"></i></h1>
-            </div>
-        </div>
+        
+        <% if(Blogs.length > 0) { %> 
+            <% Blogs.forEach(blog => { %> 
+
+                <div class="mx-5 my-5 p-5 space-y-4 border border-white rounded-md shadow-md shadow-white">
+                    <h1 class="text-3xl underline"><%= blog.title %> </h1>
+                    <p class="italic">
+                        <%= blog.blogbody %>
+                    </p>
+                    <div class="flex item-center justify-between">
+                        <h1 class="text-lg"><%= blog.author %></h1>
+                        <a id=<%= blog._id %>  onclick="DeleteBlog(this.id)" class="text-lg"><i class="fa fa-trash-o px-1 py-1 hover:border hover:border-white hover:rounded-md"></i></a>
+                    </div>
+                </div>
+
+            <% }) %> 
+        <% } %> 
+
     </section>
 
     <script src="/AllBlogs.js"></script>

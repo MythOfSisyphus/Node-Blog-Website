@@ -51,7 +51,18 @@ app.post('/create', async (req, res) => {
 })
 
 app.get('/allblogs', async(req, res) => {
-    // let AllBlogs = await Blogs.find().sort({createdAt: -1});
-    // res.json(AllBlogs)
-    res.render('AllBlogs')
+    let AllBlogs = await Blogs.find().sort({createdAt: -1});
+    // res.json(AllBlogs);
+    res.render('AllBlogs', { Blogs: AllBlogs });
+})
+
+app.get('/delete/:id', (req, res) => {
+    Blogs.findByIdAndRemove(req.params.id, (err, doc) => {
+        if(!err) {
+            res.redirect('/allblogs')
+        }
+        else {
+            console.log('Failed to delete user Details: ', err)
+        }
+    })
 })
