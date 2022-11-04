@@ -11,6 +11,14 @@ async function sendingBlog() {
     let author = Author.value;
     let blogbody = BlogBody.value;
 
+    let TitileError = document.querySelector('#TitileError');
+    let NameError = document.querySelector('#NameError');
+    let BlogBodyError = document.querySelector('#BlogBodyError');
+
+    TitileError.value = '';
+    NameError.value = '';
+    BlogBodyError.value = '';
+
 
     let res = await fetch('/create', {
         method: 'POST',
@@ -21,9 +29,13 @@ async function sendingBlog() {
     let data = await res.json();
     console.log(data);
 
-    location.assign('/allblogs');
+    if(data.errors) {
+        TitileError.textContent = data.errors.title;
+        NameError.textContent = data.errors.author;
+        BlogBodyError.textContent = data.errors.blogbody;
+    }
 
-    // title.value = '';
-    // author.value = '';
-    // blogbody.value = '';
+    if(data.yeah) {
+        location.assign('/allblogs');
+    }
 }

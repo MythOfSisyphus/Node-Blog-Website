@@ -3,14 +3,16 @@ const express = require('express');
 const { Router } = require('./Routes/WebRoutes')
 
 const path = require('path')
+
 // Middleware
 const morgan = require('morgan')
+
 // mongoose
 const mongoose = require('mongoose')
+
 // Getting MongoURI ( I'm not giving my Key you can get yours from MongoDB Atlas )
 const { MongoDB_Connection } = require('./tools/DBURI');
-// BlogSchema
-const { Blogs } = require('./DataBase/BlogSchema')
+
 // express app
 const app = express();
 
@@ -42,4 +44,5 @@ app.get('/', (req, res) => {
     res.render('Home')
 })
 
+// app routes
 app.use(Router)
