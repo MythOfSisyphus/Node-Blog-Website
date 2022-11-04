@@ -54,3 +54,21 @@ module.exports.deleteBlog_get = (req, res) => {
         }
     })
 }
+
+// login
+module.exports.login_get = (req, res) => {
+    res.render('login')
+}
+
+module.exports.login_post = (req, res) => {
+    console.log(req.body);
+    res.json(req.body)
+}
+
+module.exports.signup_get = (req, res) => {
+    res.render('signup')
+}
+
+module.exports.signup_post = (req, res) => {
+    res.send('signup post request')
+}
