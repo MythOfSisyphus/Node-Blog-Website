@@ -5,7 +5,7 @@ const morgan = require('morgan')
 // mongoose
 const mongoose = require('mongoose')
 // Getting MongoURI ( I'm not giving my Key you can get yours from MongoDB Atlas )
-const { MongoDB_Connection } = require('./Keys/MongoURI');
+const { MongoDB_Connection } = require('./tools/DBURI');
 const exp = require('constants');
 // express app
 const app = express();
