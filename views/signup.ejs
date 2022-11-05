@@ -9,32 +9,32 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body>
-    <section class="text-gray-600 body-font relative">
+<body class="bg-gray-900">
+    <section class="text-white body-font relative">
         <div class="mx-4 sm:mx-12 md:mx-20 lg:mx-44  px-5 py-24 mx-auto items-center">
-            <div class="bg-white flex flex-col w-full">
-                <h2 class="text-gray-900 text-xl mb-1 font-semibold">signup</h2>
+            <div class="flex flex-col w-full">
+                <h1 class=" text-3xl mb-1 font-semibold">Signup</h1>
                 <!-- <p class="leading-relaxed mb-5 text-gray-600">Post-ironic portland shabby chic echo park, banjo fashion axe</p> -->
                 <div class="relative mb-4">
-                    <label for="name" class="leading-7 text-sm text-gray-600">Name</label>
+                    <label for="name" class="leading-7 text-sm ">Name</label>
                     <input type="text" id="name" name="NameVal"
-                        class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                        class="w-full bg-white rounded border border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                     <div id="NameError" class="text-red-500 font-semibold"></div>
                 </div>
                 <div class="relative mb-4">
-                    <label for="email" class="leading-7 text-sm text-gray-600">Email</label>
+                    <label for="email" class="leading-7 text-sm">Email</label>
                     <input id="email" name="EmailVal"
-                        class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                        class="w-full bg-white rounded border border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                     <div id="EmailError" class="text-red-500 font-semibold"></div>
                 </div>
                 <div class="relative mb-4">
-                    <label for="password" class="leading-7 text-sm text-gray-600">Password</label>
+                    <label for="password" class="leading-7 text-sm">Password</label>
                     <input id="password" name="PasswordVal"
-                        class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                        class="w-full bg-white rounded border border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                     <div id="PassError" class="text-red-500 font-semibold"></div>
                 </div>
                 <button type="submit" id="signupBtn"
-                    class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">signup</button>
+                    class="text-white bg-black-500 border border-white font-semibold py-2 px-6  rounded text-lg">signup</button>
             </div>
         </div>
     </section>
