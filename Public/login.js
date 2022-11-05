@@ -32,7 +32,7 @@ loginBtn.addEventListener('click', async () => {
         }
     
         if(data.user) {
-            location.assign('/allblogs')
+            location.assign('/')
         }
     }
     catch(err) {

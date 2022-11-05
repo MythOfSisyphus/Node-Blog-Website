@@ -5,6 +5,7 @@ const { Router } = require('./Routes/WebRoutes')
 const path = require('path')
 
 const cookieParser = require('cookie-parser');
+const { requireAuth, checkUser } = require('./Middlewares/AuthMiddleware')
 
 // Middleware
 const morgan = require('morgan')
@@ -41,6 +42,8 @@ app.set('view engine', 'ejs')
 
 // serving static files like 'js, css that are required for our web pages'
 app.use(express.static(path.join(__dirname, 'public')))
+
+app.get('*', checkUser);
 
 app.get('/', (req, res) => {
     res.cookie('Lucky', "This is your first cookie, haha", {secure: true, maxAge: 24 * 60 * 60 });
