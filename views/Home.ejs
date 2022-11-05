@@ -22,10 +22,19 @@
             </a>
             <nav
                 class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-600	flex flex-wrap items-center text-base justify-center">
-                <a href="/" class="mr-5 hover:text-white">Home</a>
-                <a href="/create" class="mr-5 hover:text-white">Create Blog</a>
-                <a href="/allblogs" class="mr-5 hover:text-white">All Blogs</a>
-                <a href="/about" class="mr-5 hover:text-white">About Us</a>
+
+                <% if(user) { %>
+                    <a href="/" class="mr-5 hover:text-white">Home</a>
+                    <a href="/allblogs" class="mr-5 hover:text-white">All Blogs</a>
+                    <a href="/create" class="mr-5 hover:text-white">Create Blog</a>
+                    <a href="/logout" class="mr-5 hover:text-white">logout</a>
+                <% } else { %>
+                    <a href="/" class="mr-5 hover:text-white">Home</a>
+                    <a href="/allblogs" class="mr-5 hover:text-white">All Blogs</a>
+                    <a href="/login" class="mr-5 hover:text-white">login</a>
+                    <a href="/signup" class="mr-5 hover:text-white">signup</a>
+                <% } %>
+
             </nav>
         </div>
     </header>
@@ -35,7 +44,13 @@
     <section class="text-gray-400 bg-gray-900 body-font selection:bg-red-500 selection:text-white">
         <div class="container px-5 py-10 mx-auto">
             <div class="lg:w-2/3 flex flex-col space-y-3 items-start mx-auto">
-                <h1 class="flex-grow sm:pr-16 text-4xl font-medium title-font text-white">Welcome to MyBlogs</h1>
+                
+                <% if(user) { %>
+                    <h1 class="flex-grow sm:pr-16 text-4xl font-medium title-font text-white"> Welcome <%= user.NameVal %></h1>
+                <% } else { %>
+                    <h1 class="flex-grow sm:pr-16 text-4xl font-medium title-font text-white"> Welcome to MyBlogs </h1>
+                <% } %> 
+
                 <h1 class="flex-grow sm:pr-16 text-2xl title-font text-white">
                     Create a blog and share your thoughts & perspective with the world, <br>
                     you can also read blogs of the people all around the world.
