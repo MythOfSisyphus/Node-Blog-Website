@@ -43,7 +43,7 @@ app.set('view engine', 'ejs')
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.get('/', (req, res) => {
-    res.cookie('Lucky', "This is your first cookie, haha", { maxAge: 24 * 60 * 60 });
+    res.cookie('Lucky', "This is your first cookie, haha", {secure: true, maxAge: 24 * 60 * 60 });
     res.render('Home')
 })
 

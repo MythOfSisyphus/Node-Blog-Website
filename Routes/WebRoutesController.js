@@ -2,6 +2,18 @@ const { Blogs } = require('../DataBase/BlogSchema');
 
 const { User } = require('../DataBase/UserSchema');
 
+const { JWT_SECRET_KEY } = require('../tools/jwtKey')
+
+const jwt = require('jsonwebtoken');
+
+const bcrypt = require('bcrypt')
+
+// function to create token for jwt 
+let maxAge = 24 * 60 * 60;
+const createToken = (id) => {
+    return jwt.sign({ id }, JWT_SECRET_KEY, { expiresIn:  maxAge});
+};
+
 function ErrorHandler(err) {
     // console.log(err.message);
 
@@ -26,6 +38,14 @@ function AuthError(err) {
     console.log(err.message, err.code);
 
     let errors = { NameVal: '', EmailVal: '', PasswordVal: '' };
+
+    if(err.message === 'incorrect email') {
+        errors.EmailVal = 'This email is not registered.'
+    }
+
+    if(err.message === 'incorrect password') {
+        errors.PasswordVal = 'This password is incorrect.'
+    }
 
     // console.log(err.errors);
 
@@ -83,9 +103,20 @@ module.exports.login_get = (req, res) => {
     res.render('login')
 }
 
-module.exports.login_post = (req, res) => {
+module.exports.login_post = async(req, res) => {
     console.log(req.body);
-    res.json(req.body)
+    let { EmailVal, PasswordVal } = req.body;
+
+    try {
+        let user = await User.login(EmailVal, PasswordVal);
+        res.status(200).json({user: user._id})
+    } 
+    catch(err) {
+        let errors = AuthError(err);
+        res.json({errors})
+    }
+
+
 }
 
 module.exports.signup_get = (req, res) => {
@@ -99,6 +130,8 @@ module.exports.signup_post = async (req, res) => {
 
     try {
         let NewUser = await User.create({ NameVal, EmailVal, PasswordVal });
+        let token = createToken(NewUser._id);
+        res.cookie('jwt', token, { httpOnly: true, secure: true, maxAge: maxAge * 1000 })
         res.json({account: NewUser})
     }
     catch(err) {
