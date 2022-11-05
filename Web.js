@@ -4,6 +4,8 @@ const { Router } = require('./Routes/WebRoutes')
 
 const path = require('path')
 
+const cookieParser = require('cookie-parser');
+
 // Middleware
 const morgan = require('morgan')
 
@@ -31,7 +33,8 @@ mongoose.connect(URI, { useNewUrlParser: true, useUnifiedTopology: true })
 // Middlewares
 app.use(morgan('dev'))
 app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
+app.use(cookieParser())
+// app.use(express.urlencoded({ extended: true }))
 
 // Setting up view engine
 app.set('view engine', 'ejs')
@@ -40,7 +43,7 @@ app.set('view engine', 'ejs')
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.get('/', (req, res) => {
-    // res.send('Hello world! This is my blog website.')
+    res.cookie('Lucky', "This is your first cookie, haha", { maxAge: 24 * 60 * 60 });
     res.render('Home')
 })
 

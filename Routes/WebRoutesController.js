@@ -1,4 +1,6 @@
-const { Blogs } = require('../DataBase/BlogSchema')
+const { Blogs } = require('../DataBase/BlogSchema');
+
+const { User } = require('../DataBase/UserSchema');
 
 function ErrorHandler(err) {
     // console.log(err.message);
@@ -12,6 +14,27 @@ function ErrorHandler(err) {
         Object.values(err.errors).forEach(item => {
             // console.log(item.properties.path)
             // console.log(item.properties.message)
+
+            errors[item.properties.path] = item.properties.message;
+        })
+    }
+
+    return errors;
+}
+
+function AuthError(err) {
+    console.log(err.message, err.code);
+
+    let errors = { NameVal: '', EmailVal: '', PasswordVal: '' };
+
+    // console.log(err.errors);
+
+    // console.log(Object.values(err.errors))
+
+    if(err.message.includes('User validation failed')) {
+        Object.values(err.errors).forEach(item => {
+            // console.log(item.properties.path)
+            // console.log(item.properties.mes)
 
             errors[item.properties.path] = item.properties.message;
         })
@@ -69,6 +92,18 @@ module.exports.signup_get = (req, res) => {
     res.render('signup')
 }
 
-module.exports.signup_post = (req, res) => {
-    res.send('signup post request')
+module.exports.signup_post = async (req, res) => {
+    console.log(req.body);
+
+    const { NameVal, EmailVal, PasswordVal } = req.body;
+
+    try {
+        let NewUser = await User.create({ NameVal, EmailVal, PasswordVal });
+        res.json({account: NewUser})
+    }
+    catch(err) {
+        let errors = AuthError(err);
+        res.status(400).json({errors})
+    }
+
 }
