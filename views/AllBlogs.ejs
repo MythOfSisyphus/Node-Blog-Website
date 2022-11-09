@@ -36,11 +36,16 @@
     <hr>
 
     <section id="Blogs">
+
+        <!-- Search functionality -->
+        <div class="mx-5 my-5">
+            <input class="px-2 py-2 w-full bg-gray-900 border border-white rounded-md text-white shadow-sm shadow-white" placeholder="Seach here..." type="text" id="searchBlog">
+        </div>
         
         <% if(Blogs.length > 0) { %> 
             <% Blogs.forEach(blog => { %> 
 
-                <div class="mx-5 my-5 p-5 space-y-4 border border-white rounded-md shadow-md shadow-white">
+                <div class="seaching mx-5 my-5 p-5 space-y-4 border border-white rounded-md shadow-md shadow-white">
                     <h1 class="text-3xl underline"><%= blog.title %> </h1>
                     <p class="italic">
                         <%= blog.blogbody %>
